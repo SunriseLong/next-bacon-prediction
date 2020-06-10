@@ -1,7 +1,7 @@
 import json
 import requests
 import numpy as np
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -14,7 +14,7 @@ def get_next_word():
                         data='{"instances": ["phrase"]}'.replace("phrase", str(request.data.decode("utf-8"))),
                         headers=headers)
     prediction = json.loads(res.text)['predictions'][0][:-1]
-    return {"next_word": index2word[np.argmax(prediction)]}
+    return jsonify({"next_word": index2word[np.argmax(prediction)]})
 
 
 # method to read the index to word mapping
