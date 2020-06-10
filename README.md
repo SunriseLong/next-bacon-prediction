@@ -28,7 +28,7 @@ The dictionary containing `index2word` mappings was exported as a JSON file.
 
 ### Deployment
 
-The model is hosted on an EC2 instance running the TensorFlow Serving image. tf Serving requires models to be versioned by directory.
+The model is hosted on an EC2 (at 3.235.192.240:8501) instance running the TensorFlow Serving image. tf Serving requires models to be versioned by directory.
 Here, `v1` is the where our model lives. Within this directory, the following artifacts are needed. 
 
 ```
@@ -42,7 +42,7 @@ Here, `v1` is the where our model lives. Within this directory, the following ar
 
 Our `variables.data-00000-of-00001` is around 600MB so it has been omitted from GitHub. 
 
-To request a prediction:
+To request a prediction(s):
 ```shell script
 $ curl -d '{"instances": [<phrase1>, <phrase2>, ...]}' \ 
   -X POST http:/3.235.192.240:8501/v1/models/next-bacon-prediction:predict
@@ -51,9 +51,11 @@ $ curl -d '{"instances": [<phrase1>, <phrase2>, ...]}' \
 ```
 
 For our example we would only like the next word, not the entire probability matrix. To do this we can set up a Flask API 
-which contains the `index2word` mapping. It will ping the tf Serving endpoint then use `index2word` to convert the matrix to
+which contains the `index2word` mapping. I have provided an example Dockerfile to run it. It will ping the tf Serving
+endpoint then use `index2word` to convert the matrix to
 the most likely next word. Having a second service enables us to customize what we would like to return. The service can 
-be easily extended to return the top 5 most likely next words.
+be easily extended to return the top 5 most likely next words. Unlike the tf serving API, it only supports 1 prediction per
+request.
 
 ex: 
 ```python
