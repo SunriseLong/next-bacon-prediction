@@ -1,6 +1,6 @@
 # next-bacon-prediction
 
-This demo of uses the Universal Sentence Encoder to build a next-word prediction service. Francis Bacon was an English
+This demo uses the Universal Sentence Encoder to build a next-word prediction service. Francis Bacon was an English
 essayist famous for his aphoristic style. A disregard for traditional essay convention noticeably marks his work.
 The model in this demo is trained on his essay _Of Truth_.
 
