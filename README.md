@@ -8,7 +8,7 @@ The model in this demo is trained on his essay _Of Truth_.
 # Process
 
 The code in this repo is meant as a demo for how a similar service can be built. The model has not be tuned or evaluated.
-Similarly, there is no unit tests or deployment automation mechanisms. I'd be happy to provide more detail on either. Please reach out!
+Similarly, there are no unit tests or deployment automation mechanisms. I'd be happy to provide more detail on either. Please reach out!
 
 ### Training
 The model was built in a cloud notebook using the 1999 most frequently occuring words. To construct the train set, the 
