@@ -66,4 +66,6 @@ requests.post("http://3.235.192.240:5000/api/get_next_word",
 # Returns => {"next_word":"governs"}
 ```
 
+NOTE: I've since torn down the server
+
 Thanks for reading!
